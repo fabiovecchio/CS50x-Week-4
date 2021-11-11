@@ -104,8 +104,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             float red_gy = 0, green_gy = 0, blue_gy = 0;
             float cnt_red = 0, cnt_green = 0, cnt_blue = 0;
             // Create the gx and gy matrixes
-            int gx[3][3] =  {{-1, 0, 1},{-2, 0, 2},{-1, 0, 1}};
-            int gy[3][3] =  {{-1, -2, -1},{0, 0, 0},{1, 2, 1}};
+            int gx[3][3] =  {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+            int gy[3][3] =  {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
             //Checking the edges
             for (int i = - 1; i < 2; i++)
@@ -120,21 +120,21 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     else // It is inside the pic, so we get its 3 channels values from the copied image and we multiply them by gx and gy matrix
                     {
                         // Calculate the gx matrix
-                        red_gx += new_image[y + i][x + j].rgbtRed * gx[i+1][j+1];
-                        green_gx += new_image[y + i][x + j].rgbtGreen * gx[i+1][j+1];
-                        blue_gx += new_image[y + i][x + j].rgbtBlue * gx[i+1][j+1];
+                        red_gx += new_image[y + i][x + j].rgbtRed * gx[i + 1][j + 1];
+                        green_gx += new_image[y + i][x + j].rgbtGreen * gx[i + 1][j + 1];
+                        blue_gx += new_image[y + i][x + j].rgbtBlue * gx[i + 1][j + 1];
                         // Calculate the gy matrix
-                        red_gy += new_image[y + i][x + j].rgbtRed * gy[i+1][j+1];
-                        green_gy += new_image[y + i][x + j].rgbtGreen * gy[i+1][j+1];
-                        blue_gy += new_image[y + i][x + j].rgbtBlue * gy[i+1][j+1];
+                        red_gy += new_image[y + i][x + j].rgbtRed * gy[i + 1][j + 1];
+                        green_gy += new_image[y + i][x + j].rgbtGreen * gy[i + 1][j + 1];
+                        blue_gy += new_image[y + i][x + j].rgbtBlue * gy[i + 1][j + 1];
 
                     }
                 }
             }
             // Calculate the value for the pixel image
-            cnt_red = round(sqrt(red_gx*red_gx + red_gy*red_gy));
-            cnt_green = round(sqrt(green_gx*green_gx + green_gy*green_gy));
-            cnt_blue = round(sqrt(blue_gx*blue_gx + blue_gy*blue_gy));
+            cnt_red = round(sqrt(red_gx * red_gx + red_gy * red_gy));
+            cnt_green = round(sqrt(green_gx * green_gx + green_gy * green_gy));
+            cnt_blue = round(sqrt(blue_gx * blue_gx + blue_gy * blue_gy));
 
             // Once collected the values we calculate the avg value and store it into the original image pixel, if > 255 it caps at 255.
             if (cnt_red > 255)
